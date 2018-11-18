@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
 import { HolmesService } from './Holmes.service';
-import { Observable, Subscription } from "rxjs";
-
 declare let d3: any;
 
 @Component({
@@ -13,11 +11,8 @@ declare let d3: any;
 })
 export class AppComponent implements OnInit {
  
-  apiData:any;
   constructor(private HolmesService: HolmesService){
   }
-
-  private dataSubscription: Subscription;
 
   private barGraphOptions;
   public barGraphData:Array<any> = [];
@@ -25,17 +20,16 @@ export class AppComponent implements OnInit {
   private pieGraphOptions;
   public pieGraphData:any = [];
 
-  getBookOfWorkData(data){
-    for(let key in data){
-      this.pieGraphData.push({key:key, value:this.apiData.bookOfWork[key]});
-    }
-    console.log(this.pieGraphData);
-  }
 
 async ngOnInit() {
+  this.HolmesService.getData().subscribe(data => {
+    console.log(data); 
+    this.drawPieGraph(data.bookOfWork);
+    this.drawBarGraph(data);
+   });
+  }
 
-  this.HolmesService.getData().subscribe(data => this.apiData = data);
-    console.log(this.apiData);
+  drawBarGraph(data){
     this.barGraphOptions = {
       chart: {
         type: 'discreteBarChart',
@@ -102,6 +96,16 @@ async ngOnInit() {
       }
     ];
 
+  }
+
+  drawPieGraph(data){
+    console.log(data);
+
+    for(let key in data){
+      this.pieGraphData.push({key:key, y:data[key]});
+    }
+    console.log(this.pieGraphData);
+
     this.pieGraphOptions = {
       chart: {
                type: 'pieChart',
@@ -123,8 +127,8 @@ async ngOnInit() {
                }
            }
    };
- 
 
-  }
+
+  }  
 
 }
