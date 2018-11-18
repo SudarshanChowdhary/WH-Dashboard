@@ -1,0 +1,193 @@
+{
+  "id": null,
+  "timeScale": "Monthly",
+  "userFilter": null,
+  "bookOfWork": {
+    "completed": 34,
+    "workInProgress": 103,
+    "unassigned": 0,
+    "exception": 0,
+    "totalContract": 146
+  },
+  "contractProcessed": {
+    "lstContractProcessed": [
+      {
+        "contractProcessed": 8,
+        "timeScale": "August"
+      },
+      {
+        "contractProcessed": 9,
+        "timeScale": "September"
+      },
+      {
+        "contractProcessed": 17,
+        "timeScale": "October"
+      },
+      {
+        "contractProcessed": 0,
+        "timeScale": "November"
+      }
+    ],
+    "avgTeamWork": 8
+  },
+  "completionStatus": [
+    {
+      "contractAllocated": 8,
+      "contractCompleted": 8,
+      "timeScale": "August"
+    },
+    {
+      "contractAllocated": 9,
+      "contractCompleted": 9,
+      "timeScale": "September"
+    },
+    {
+      "contractAllocated": 97,
+      "contractCompleted": 17,
+      "timeScale": "October"
+    },
+    {
+      "contractAllocated": 32,
+      "contractCompleted": 0,
+      "timeScale": "November"
+    }
+  ],
+  "turnaroundTime": {
+    "lstTurnaroundTime": [
+      {
+        "avgTime": 0,
+        "userInfo": "Ankur Yadav"
+      },
+      {
+        "avgTime": 1,
+        "userInfo": "Kajal Gadiya"
+      },
+      {
+        "avgTime": 1,
+        "userInfo": "Kapil Gupta"
+      },
+      {
+        "avgTime": 0,
+        "userInfo": "Manisha Saxena"
+      },
+      {
+        "avgTime": 0,
+        "userInfo": "Mohit Magarde"
+      },
+      {
+        "avgTime": 0,
+        "userInfo": "Pavithra"
+      },
+      {
+        "avgTime": 0,
+        "userInfo": "Rajesh"
+      },
+      {
+        "avgTime": 0,
+        "userInfo": "Shambhavi Mishra"
+      },
+      {
+        "avgTime": 0,
+        "userInfo": "Shrutika"
+      },
+      {
+        "avgTime": 0,
+        "userInfo": "Vishal Chavan"
+      }
+    ],
+    "timeScale": "Monthly",
+    "avgTeamTime": 0
+  },
+  "analystErrors": {
+    "avgTeamError": 0,
+    "timeScale": "Monthly",
+    "lstAnalystErrors": [
+      {
+        "empError": 0,
+        "userInfo": "Ankur Yadav"
+      },
+      {
+        "empError": 0,
+        "userInfo": "Kajal Gadiya"
+      },
+      {
+        "empError": 0,
+        "userInfo": "Kapil Gupta"
+      },
+      {
+        "empError": 0,
+        "userInfo": "Manisha Saxena"
+      },
+      {
+        "empError": 0,
+        "userInfo": "Mohit Magarde"
+      },
+      {
+        "empError": 0,
+        "userInfo": "Pavithra"
+      },
+      {
+        "empError": 0,
+        "userInfo": "Rajesh"
+      },
+      {
+        "empError": 0,
+        "userInfo": "Shambhavi Mishra"
+      },
+      {
+        "empError": 0,
+        "userInfo": "Shrutika"
+      },
+      {
+        "empError": 0,
+        "userInfo": "Vishal Chavan"
+      }
+    ]
+  },
+  "slaPerformance": {
+    "avgTeamSLA": 31,
+    "timeScale": "Monthly",
+    "lstSLAPerformance": [
+      {
+        "empSLA": 25,
+        "userInfo": "Ankur Yadav"
+      },
+      {
+        "empSLA": 100,
+        "userInfo": "Kajal Gadiya"
+      },
+      {
+        "empSLA": 100,
+        "userInfo": "Kapil Gupta"
+      },
+      {
+        "empSLA": 0,
+        "userInfo": "Manisha Saxena"
+      },
+      {
+        "empSLA": 0,
+        "userInfo": "Mohit Magarde"
+      },
+      {
+        "empSLA": 16,
+        "userInfo": "Pavithra"
+      },
+      {
+        "empSLA": 36,
+        "userInfo": "Rajesh"
+      },
+      {
+        "empSLA": 0,
+        "userInfo": "Shambhavi Mishra"
+      },
+      {
+        "empSLA": 37,
+        "userInfo": "Shrutika"
+      },
+      {
+        "empSLA": 0,
+        "userInfo": "Vishal Chavan"
+      }
+    ]
+  }
+}
