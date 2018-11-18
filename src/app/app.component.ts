@@ -15,88 +15,180 @@ export class AppComponent implements OnInit {
   }
 
   private barGraphOptions;
-  public barGraphData:Array<any> = [];
+  private barGraphData:Array<any> = [];
 
   private pieGraphOptions;
-  public pieGraphData:any = [];
+  private pieGraphData:any = [];
+
+  private multiLineGraphOptions; 
 
 
 async ngOnInit() {
   this.HolmesService.getData().subscribe(data => {
     console.log(data); 
     this.drawPieGraph(data.bookOfWork);
-    this.drawBarGraph(data);
+    this.drawMultiBarGraph(data.completionStatus);
+    this.drawMultiLineGraph(data.contractProcressed)
    });
   }
 
-  drawBarGraph(data){
+  drawMultiBarGraph(data){
     this.barGraphOptions = {
       chart: {
-        type: 'discreteBarChart',
+        type: 'multiBarChart',
         height: 450,
         margin : {
-          top: 20,
+          top: 50,
           right: 20,
           bottom: 50,
           left: 55
         },
-        x: function(d){return d.label;},
-        y: function(d){return d.value;},
+        xAxis: {
+          showMaxMin: true,
+          tickFormat: function(d){
+//              return d3.format(',f')(d);
+              return d3.time.format(d);
+          }
+      },
+      yAxis: {
+          axisLabel: 'NUMBER OF CONTRACTS',
+          axisLabelDistance: -10,
+          tickFormat: function(d){
+              return d3.format(',.1f')(d);
+          }
+      },
         showValues: true,
         valueFormat: function(d){
           return d3.format(',.4f')(d);
         },
-        duration: 500,
-        xAxis: {
-          axisLabel: 'X Axis'
-        },
-        yAxis: {
-          axisLabel: 'NUMBER OF CONTRACTS',
-          axisLabelDistance: -4
-        }
+        duration: 500
       }
     }
     this.barGraphData = [
       {
-        key: "Cumulative Return",
-        values: [
+        "key": "Contract Allocated",
+        "values": [
           {
-            "label" : "A" ,
-            "value" : -29.765957771107
-          } ,
+            "x": "August",
+            "y": 8,
+          },
           {
-            "label" : "B" ,
-            "value" : 0
-          } ,
+            "x": "September",
+            "y": 9,
+          },
           {
-            "label" : "C" ,
-            "value" : 32.807804682612
-          } ,
+            "x": "October",
+            "y": 97,
+          },
           {
-            "label" : "D" ,
-            "value" : 196.45946739256
-          } ,
+            "x": "November",
+            "y": 32,
+          }
+        ]
+      },
+      {
+        "key": "Contract Completed",
+        "values": [
           {
-            "label" : "E" ,
-            "value" : 0.19434030906893
-          } ,
+            "x": "August",
+            "y": 8,
+          },
           {
-            "label" : "F" ,
-            "value" : -98.079782601442
-          } ,
+            "x": "September",
+            "y": 9
+          },
           {
-            "label" : "G" ,
-            "value" : -13.925743130903
-          } ,
+            "x": "October",
+            "y": 17
+          },
           {
-            "label" : "H" ,
-            "value" : -5.1387322875705
+            "x": "November",
+            "y": 0
           }
         ]
       }
-    ];
+    ]
 
   }
+
+  drawMultiLineGraph(data){
+    this.multiLineGraphOptions = {
+      chart: {
+        type: 'multiLineChart',
+        height: 450,
+        margin : {
+          top: 50,
+          right: 20,
+          bottom: 50,
+          left: 55
+        },
+        xAxis: {
+          showMaxMin: true,
+          tickFormat: function(d){
+//              return d3.format(',f')(d);
+              return d3.time.format(d);
+          }
+      },
+      yAxis: {
+          axisLabelDistance: -10,
+          tickFormat: function(d){
+              return d3.format(',.1f')(d);
+          }
+      },
+        showValues: true,
+        valueFormat: function(d){
+          return d3.format(',.4f')(d);
+        },
+        duration: 500
+      }
+    }
+    this.barGraphData = [
+      {
+        "key": "Contract Processed",
+        "values": [
+          {
+            "x": "August",
+            "y": 8
+          },
+          {
+            "x": "September",
+            "y": 9
+          },
+          {
+            "x": "October",
+            "y": 17
+          },
+          {
+            "x": "November",
+            "y": 0
+          }
+        ]
+      },
+      {
+        "key": "Avg. Team Work",
+        "values": [
+          {
+            "x": "August",
+            "y": 8
+          },
+          {
+            "x": "September",
+            "y": 8
+          },
+          {
+            "x": "October",
+            "y": 8
+          },
+          {
+            "x": "November",
+            "y": 8
+          }
+        ]
+      }
+    ]
+
+  }
+
 
   drawPieGraph(data){
     console.log(data);
