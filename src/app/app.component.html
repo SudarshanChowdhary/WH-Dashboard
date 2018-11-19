@@ -1,93 +1,78 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <main class="container">
-<header class="container-fluid">
-  <nav class="navbar bg-primary" style="padding: 1px">
-    <div class="row">
-    <div class="nav navbar-nav col-md-6">
-      <ul class="list-inline pull-left">
-        <li><img src="./assets/logo.png" title="" alt="compnay logo"></li>
-        <li><div>Contract Intelligence</div></li>
-        <li><div>Dashboard</div></li>
-      </ul>
-    </div>
-    <div class="col-md-6" style="padding: 8px;">
-      <ul class="list-inline pull-right">
-          <li><div class="glyphicon glyphicon-user"> Kajal Gadiya <span class="caret"></span></div></li>
-          <li><div href="#" class="glyphicon glyphicon-log-out"></div></li>
+  <header class="container-fluid">
+    <nav class="navbar bg-primary" style="padding: 1px">
+      <div class="row">
+        <div class="nav navbar-nav col-md-6">
+          <ul class="list-inline pull-left">
+            <li><img src="./assets/logo.png" title="" alt="compnay logo"></li>
+            <li>
+              <div>Contract Intelligence</div>
+            </li>
+            <li>
+              <div>Dashboard</div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6" style="padding: 8px;">
+          <ul class="list-inline pull-right">
+            <li>
+              <div class="glyphicon glyphicon-user"> Kajal Gadiya <span class="caret"></span></div>
+            </li>
+            <li>
+              <div href="#" class="glyphicon glyphicon-log-out"></div>
+            </li>
           </ul>
         </div>
       </div>
-  </nav>  
-</header>
+    </nav>
+  </header>
 
-<section class="container">
-<ul class="list-inline">
-  <li><button class="btn btn-sm btn-primary">TimeScale</button></li>
-  <li><div>
-    <label for="today"><input type="radio" value="today" name="timeframe"/> Today </label> 
-  </div></li>
-    <li><div>
-<label for="weekly"><input type="radio" value="week" name="timeframe"/> Weekly </label> 
-  </div></li>
-    <li><div>
-  <label for="monthy"><input type="radio" value="month" name="timeframe" checked/> Monthy </label> 
+  <section class="container">
+    <ul class="list-inline">
+      <li><button class="btn btn-sm btn-primary">TimeScale</button></li>
+      <li>
+        <div>
+          <label for="today"><input type="radio" value="today" name="timeframe" /> Today </label>
+        </div>
+      </li>
+      <li>
+        <div>
+          <label for="weekly"><input type="radio" value="week" name="timeframe" /> Weekly </label>
+        </div>
+      </li>
+      <li>
+        <div>
+          <label for="monthy"><input type="radio" value="month" name="timeframe" checked /> Monthy </label>
+        </div>
+      </li>
+      <button class="btn btn-primary">All Employees</button>
+      <li>
+        <div>
+        </div>
+      </li>
+    </ul>
+  </section>
 
-  </div></li>
-  <button class="btn btn-primary">All Employees</button>
-    <li><div>
-
-  </div></li>
-
-</ul>
-</section>
-
-{{apiData | json}}
-<section class="container">
-  <div class="row">
-    <div class="col-md-5">
-
-      <nvd3 [options]="pieGraphOptions" [data]="pieGraphData"></nvd3>
-
+  <!-- {{apiData | json}} -->
+  <section class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ngx-charts-pie-chart [view]="[500, 500]" [gradient]="pieGraphOptions.gradient" [results]="bookOfWorkData" [legend]="pieGraphOptions.legend" [animations]="pieGraphOptions.animations" [labels]="pieGraphOptions.labels"
+          [legendTitle]="pieGraphOptions.legendTitle" [legendPosition]="pieGraphOptions.legendPosition" [doughnut]="pieGraphOptions.doughnut">
+        </ngx-charts-pie-chart>
+      </div>
+      <div class="col-md-6">
+        <ngx-charts-bar-vertical-2d [view]="[500, 500]" [scheme]="groupedVerticalBarGraphOptions.scheme" [results]="completionStatusData"
+          [gradient]="groupedVerticalBarGraphOptions.gradient" [xAxis]="groupedVerticalBarGraphOptions.xAxis" [yAxis]="groupedVerticalBarGraphOptions.yAxis"
+          [legend]="groupedVerticalBarGraphOptions.legend" [showXAxisLabel]="groupedVerticalBarGraphOptions.showXAxisLabel"
+          [showYAxisLabel]="groupedVerticalBarGraphOptions.showYAxisLabel" [xAxisLabel]="groupedVerticalBarGraphOptions.xAxisLabel"
+          [yAxisLabel]="groupedVerticalBarGraphOptions.yAxisLabel">
+        </ngx-charts-bar-vertical-2d>
+      </div>
     </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-5">
-      
-      <nvd3 [options]="barGraphOptions" [data]="barGraphData"></nvd3>
-
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-5">
-
-      <nvd3 [options]="multiLineGraphOptions" [data]="barGraphData"></nvd3>
-
-    </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-5">
-      
-      <nvd3 [options]="barGraphOptions" [data]="barGraphData"></nvd3>
-
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-5">
-
-      <nvd3 [options]="pieGraphOptions" [data]="pieGraphData"></nvd3>
-
-    </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-5">
-      
-      <nvd3 [options]="barGraphOptions" [data]="barGraphData"></nvd3>
-
-    </div>
-  </div>
 
 
-</section>
+
+  </section>
 </main>
-
-
-
-

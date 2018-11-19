@@ -1,226 +1,120 @@
-import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HolmesService } from './Holmes.service';
-declare let d3: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css', '../../node_modules/nvd3/build/nv.d3.css'],
-  providers: [HolmesService],
-  encapsulation: ViewEncapsulation.None
+  providers: [HolmesService]
 })
 export class AppComponent implements OnInit {
- 
-  constructor(private HolmesService: HolmesService){
+  constructor(private HolmesService: HolmesService) {
+    this.HolmesService.getData().subscribe(data => {
+      this.drawPieGraph(data.bookOfWork);
+      this.drawMultiBarGraph(data.completionStatus);
+      this.drawMultiLineGraph(data.contractProcressed)
+    });
+  
   }
-
-  private barGraphOptions;
-  private barGraphData:Array<any> = [];
-
-  private pieGraphOptions;
-  private pieGraphData:any = [];
-
-  private multiLineGraphOptions; 
-
-
-async ngOnInit() {
-  this.HolmesService.getData().subscribe(data => {
-    console.log(data); 
-    this.drawPieGraph(data.bookOfWork);
-    this.drawMultiBarGraph(data.completionStatus);
-    this.drawMultiLineGraph(data.contractProcressed)
-   });
-  }
-
-  drawMultiBarGraph(data){
-    this.barGraphOptions = {
-      chart: {
-        type: 'multiBarChart',
-        height: 450,
-        margin : {
-          top: 50,
-          right: 20,
-          bottom: 50,
-          left: 55
+  private pieGraphOptions: Object = {
+    gradient: false,
+    animations: true,
+    labels: true,
+    legend: true,
+    legendTitle: "Legends",
+    legendPosition: "right",
+    doughnut: false
+  };
+  private groupedVerticalBarGraphOptions: Object = {
+    scheme: {
+      domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    },
+    gradient: true,
+    xAxis: true,
+    yAxis: true,
+    legend: true,
+    showXAxisLabel: true,
+    showYAxisLabel: true,
+    legendTitle: "Legends",
+    legendPosition: "right",
+    xAxisLabel: "",
+    yAxisLabel: ""
+  };
+  private completionStatusData: Array<any> =[
+    {
+      "name": "August",
+      "series": [
+        {
+          "name": "Contract Allocated",
+          "value": 8
         },
-        xAxis: {
-          showMaxMin: true,
-          tickFormat: function(d){
-//              return d3.format(',f')(d);
-              return d3.time.format(d);
-          }
-      },
-      yAxis: {
-          axisLabel: 'NUMBER OF CONTRACTS',
-          axisLabelDistance: -10,
-          tickFormat: function(d){
-              return d3.format(',.1f')(d);
-          }
-      },
-        showValues: true,
-        valueFormat: function(d){
-          return d3.format(',.4f')(d);
+        {
+          "name": "Contract Completed",
+          "value": 8
+        }
+      ]
+    },
+    {
+      "name": "September",
+      "series": [
+        {
+          "name": "Contract Allocated",
+          "value": 9
         },
-        duration: 500
-      }
+        {
+          "name": "Contract Completed",
+          "value": 9
+        }
+      ]
+    },
+    {
+      "name": "October",
+      "series": [
+        {
+          "name": "Contract Allocated",
+          "value": 97
+        },
+        {
+          "name": "Contract Completed",
+          "value": 17
+        }
+      ]
+    },
+    {
+      "name": "November",
+      "series": [
+        {
+          "name": "Contract Allocated",
+          "value": 32
+        },
+        {
+          "name": "Contract Completed",
+          "value": 0
+        }
+      ]
     }
-    this.barGraphData = [
-      {
-        "key": "Contract Allocated",
-        "values": [
-          {
-            "x": "August",
-            "y": 8,
-          },
-          {
-            "x": "September",
-            "y": 9,
-          },
-          {
-            "x": "October",
-            "y": 97,
-          },
-          {
-            "x": "November",
-            "y": 32,
-          }
-        ]
-      },
-      {
-        "key": "Contract Completed",
-        "values": [
-          {
-            "x": "August",
-            "y": 8,
-          },
-          {
-            "x": "September",
-            "y": 9
-          },
-          {
-            "x": "October",
-            "y": 17
-          },
-          {
-            "x": "November",
-            "y": 0
-          }
-        ]
-      }
-    ]
+
+
+  ];
+  public bookOfWorkData: Array<object> = [{'name': 'completed', 'value': 34}, {'name': 'workInProgress', 'value': 103}, {'name': 'unassigned', 'value': 0}, {'name': 'exception', 'value': 0}];
+
+  private multiLineGraphOptions;
+
+  async ngOnInit() {
+  }
+
+  drawMultiBarGraph(data) {
 
   }
 
-  drawMultiLineGraph(data){
-    this.multiLineGraphOptions = {
-      chart: {
-        type: 'multiLineChart',
-        height: 450,
-        margin : {
-          top: 50,
-          right: 20,
-          bottom: 50,
-          left: 55
-        },
-        xAxis: {
-          showMaxMin: true,
-          tickFormat: function(d){
-//              return d3.format(',f')(d);
-              return d3.time.format(d);
-          }
-      },
-      yAxis: {
-          axisLabelDistance: -10,
-          tickFormat: function(d){
-              return d3.format(',.1f')(d);
-          }
-      },
-        showValues: true,
-        valueFormat: function(d){
-          return d3.format(',.4f')(d);
-        },
-        duration: 500
-      }
-    }
-    this.barGraphData = [
-      {
-        "key": "Contract Processed",
-        "values": [
-          {
-            "x": "August",
-            "y": 8
-          },
-          {
-            "x": "September",
-            "y": 9
-          },
-          {
-            "x": "October",
-            "y": 17
-          },
-          {
-            "x": "November",
-            "y": 0
-          }
-        ]
-      },
-      {
-        "key": "Avg. Team Work",
-        "values": [
-          {
-            "x": "August",
-            "y": 8
-          },
-          {
-            "x": "September",
-            "y": 8
-          },
-          {
-            "x": "October",
-            "y": 8
-          },
-          {
-            "x": "November",
-            "y": 8
-          }
-        ]
-      }
-    ]
+  drawMultiLineGraph(data) {
 
   }
 
 
-  drawPieGraph(data){
-    console.log(data);
-
-    for(let key in data){
-      this.pieGraphData.push({key:key, y:data[key]});
+  drawPieGraph(data) {
+    for (let key in data) {
+      this.bookOfWorkData.push({"name": key, "value": data[key]});
     }
-    console.log(this.pieGraphData);
-
-    this.pieGraphOptions = {
-      chart: {
-               type: 'pieChart',
-               title: "Book of Work",
-               height: 500,
-               x: function(d){return d.key;},
-               y: function(d){return d.y;},
-               showLabels: true,
-               duration: 5,
-               labelThreshold: 0.01,
-               labelSunbeamLayout: true,
-               legend: {
-                   margin: {
-                       top: 5,
-                       right: 5,
-                       bottom: 5,
-                       left: 0
-                   }
-               }
-           }
-   };
-
-
-  }  
-
+  }
 }
