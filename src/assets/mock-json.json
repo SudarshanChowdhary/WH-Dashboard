@@ -96,7 +96,7 @@
       }
     ],
     "timeScale": "Monthly",
-    "avgTeamTime": 0
+    "avgTeamTime": 8
   },
   "analystErrors": {
     "avgTeamError": 0,
