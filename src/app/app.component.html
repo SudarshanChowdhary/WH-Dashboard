@@ -1,152 +1,165 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <main class="container">
-  <header class="container-fluid">
-    <nav class="navbar bg-primary" style="padding: 1px">
-      <div class="row">
-        <div class="nav navbar-nav col-md-6">
-          <ul class="list-inline pull-left">
-            <li><img src="./assets/logo.png" title="" alt="compnay logo"></li>
-            <li>
-              <div>Contract Intelligence</div>
-            </li>
-            <li>
-              <div>Dashboard</div>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6" style="padding: 8px;">
-          <ul class="list-inline pull-right">
-            <li>
-              <div class="glyphicon glyphicon-user"> Kajal Gadiya <span class="caret"></span></div>
-            </li>
-            <li>
-              <div href="#" class="glyphicon glyphicon-log-out"></div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <section class="container">
-    <ul class="list-inline">
-      <li><button class="btn btn-sm btn-primary">TimeScale</button></li>
-      <li>
-        <div>
-          <label for="today"><input type="radio" value="today" name="timeframe" /> Today </label>
-        </div>
-      </li>
-      <li>
-        <div>
-          <label for="weekly"><input type="radio" value="week" name="timeframe" /> Weekly </label>
-        </div>
-      </li>
-      <li>
-        <div>
-          <label for="monthy"><input type="radio" value="month" name="timeframe" checked /> Monthy </label>
-        </div>
-      </li>
-      <button class="btn btn-primary">All Employees</button>
-      <li>
-        <div>
-        </div>
-      </li>
-    </ul>
-  </section>
-
-  <!-- {{apiData | json}} -->
-  <section class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h3 style="text-align: center">Book Of Work</h3>
-        <ngx-charts-pie-chart [view]="[500, 500]" [gradient]="pieGraphOptions.gradient" [results]="bookOfWorkData" [legend]="pieGraphOptions.legend" [animations]="pieGraphOptions.animations" [labels]="pieGraphOptions.labels"
-          [legendTitle]="pieGraphOptions.legendTitle" [legendPosition]="pieGraphOptions.legendPosition" [doughnut]="pieGraphOptions.doughnut">
-        </ngx-charts-pie-chart>
-      </div>
-      <div class="col-md-6">
-          <h3 style="text-align: center">Completion Status</h3>
-        <ngx-charts-bar-vertical-2d [view]="[500, 500]" [scheme]="groupedVerticalBarGraphOptions.scheme" [results]="completionStatusData"
-          [gradient]="groupedVerticalBarGraphOptions.gradient" [xAxis]="groupedVerticalBarGraphOptions.xAxis" [yAxis]="groupedVerticalBarGraphOptions.yAxis"
-          [legend]="groupedVerticalBarGraphOptions.legend" [showXAxisLabel]="groupedVerticalBarGraphOptions.showXAxisLabel"
-          [showYAxisLabel]="groupedVerticalBarGraphOptions.showYAxisLabel" [xAxisLabel]="groupedVerticalBarGraphOptions.xAxisLabel"
-          [yAxisLabel]="groupedVerticalBarGraphOptions.yAxisLabel">
-        </ngx-charts-bar-vertical-2d>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-          <h3 style="text-align: center">Contract Processed</h3>
-        <ngx-charts-line-chart
-      [view]="[500, 500]"
-      [scheme]="multiLineOptions.colorScheme"
-      [results]="contractProcessedData"
-      [gradient]="multiLineOptions.gradient"
-      [xAxis]="multiLineOptions.showXAxis"
-      [yAxis]="multiLineOptions.showYAxis"
-      [legend]="multiLineOptions.showLegend"
-      [showXAxisLabel]="multiLineOptions.showXAxisLabel"
-      [showYAxisLabel]="multiLineOptions.showYAxisLabel"
-      [xAxisLabel]="multiLineOptions.xAxisLabel"
-      [yAxisLabel]="multiLineOptions.yAxisLabel"
-      [autoScale]="multiLineOptions.autoScale"
-      >
-    </ngx-charts-line-chart>
-    
-      </div>
-      <div class="col-md-6">
-          <h3 style="text-align: center">Turnaround Time</h3>
-        <ngx-charts-bar-vertical
-  [view]="view"
-  [scheme]="turnaroundTimeOptions.colorScheme"
-  [results]="turnaroundTimeData"
-  [gradient]="turnaroundTimeOptions.gradient"
-  [xAxis]="turnaroundTimeOptions.showXAxis"
-  [yAxis]="turnaroundTimeOptions.showYAxis"
-  [legend]="turnaroundTimeOptions.showLegend"
-  
-  [xAxisLabel]="turnaroundTimeOptions.xAxisLabel"
-  [yAxisLabel]="turnaroundTimeOptions.yAxisLabel"
-  >
-</ngx-charts-bar-vertical>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h3 style="text-align: center">Analyst Errors</h3>
-            <ngx-charts-line-chart
-            [view]="[500, 500]"
-            [scheme]="analystErrorsOptions.colorScheme"
-            [results]="analystErrorsData"
-            [gradient]="analystErrorsOptions.gradient"
-            [xAxis]="analystErrorsOptions.showXAxis"
-            [yAxis]="analystErrorsOptions.showYAxis"
-            [legend]="analystErrorsOptions.showLegend"
-            [showXAxisLabel]="analystErrorsOptions.showXAxisLabel"
-            [showYAxisLabel]="analystErrorsOptions.showYAxisLabel"
-            [xAxisLabel]="analystErrorsOptions.xAxisLabel"
-            [yAxisLabel]="analystErrorsOptions.yAxisLabel"
-            [autoScale]="analystErrorsOptions.autoScale"
-            >
-          </ngx-charts-line-chart>
-         
-        </div>
-        <div class="col-md-6">
-            <h3 style="text-align: center">SLA Performance</h3>
-            <ngx-charts-line-chart
-            [view]="[500, 500]"
-            [scheme]="slaPerformanceOptions.colorScheme"
-            [results]="slaPerformanceData"
-            [gradient]="slaPerformanceOptions.gradient"
-            [xAxis]="slaPerformanceOptions.showXAxis"
-            [yAxis]="slaPerformanceOptions.showYAxis"
-            [legend]="slaPerformanceOptions.showLegend"
-            [xAxisLabel]="slaPerformanceOptions.xAxisLabel"
-            [yAxisLabel]="slaPerformanceOptions.yAxisLabel"
-            [autoScale]="slaPerformanceOptions.autoScale"
-            >
-          </ngx-charts-line-chart>
-         
-        </div>
-    </div>
-  </section>
-</main>
+    <header class="container-fluid">
+       <nav class="bg-primary header row">
+          <div class="nav navbar-nav col-md-6">
+             <ul class="list-inline pull-left">
+                <li><img src="./assets/logo.png" alt="compnay logo"></li>
+                <li>
+                   <div>Contract Intelligence</div>
+                </li>
+                <li>
+                   <div>Dashboard</div>
+                </li>
+             </ul>
+          </div>
+          <div class="col-md-6 user-name">
+             <ul class="list-inline pull-right">
+                <li>
+                   <div class="glyphicon glyphicon-user"> KajalGadiya <span class="caret"></span></div>
+                </li>
+                <li>
+                   <div class="glyphicon glyphicon-log-out"></div>
+                </li>
+             </ul>
+          </div>
+       </nav>
+    </header>
+    <section class="container">
+       <ul class="list-inline">
+          <li><button class="btn btn-sm btn-primary">TimeScale</button></li>
+          <li>
+             <div>
+                <label for="today"><input type="radio" value="today" name="timeframe" /> Today </label>
+             </div>
+          </li>
+          <li>
+             <div>
+                <label for="weekly"><input type="radio" value="week" name="timeframe" /> Weekly </label>
+             </div>
+          </li>
+          <li>
+             <div>
+                <label for="monthy"><input type="radio" value="month" name="timeframe" checked /> Monthy </label>
+             </div>
+          </li>
+          <button class="btn btn-primary">All Employees</button>
+          <li>
+             <div>
+             </div>
+          </li>
+       </ul>
+    </section>
+    <section class="container">
+       <div class="row">
+          <div class="col-md-6">
+             <h3 class="chart-header">Book Of Work</h3>
+             <h2 class="head-total-contracts"><span class="total-contracts">Total Contracts: 146</span> </h2>
+             <ngx-charts-pie-chart 
+             [view]="[500, 500]" 
+             [gradient]="pieGraphOptions.gradient" 
+             [scheme]="pieGraphOptions.colorScheme"
+             [results]="bookOfWorkData" 
+             [legend]="pieGraphOptions.legend" 
+             [animations]="pieGraphOptions.animations" 
+             [labels]="pieGraphOptions.labels"
+             [legendTitle]="pieGraphOptions.legendTitle" 
+             [legendPosition]="pieGraphOptions.legendPosition" 
+             [doughnut]="pieGraphOptions.doughnut">
+             </ngx-charts-pie-chart>
+          </div>
+          <div class="col-md-6">
+             <h3 class="chart-header">Completion Status</h3>
+             <ngx-charts-bar-vertical-2d 
+             [view]="[500, 500]" 
+             [scheme]="groupedVerticalBarGraphOptions.scheme" 
+             [results]="completionStatusData"
+             [gradient]="groupedVerticalBarGraphOptions.gradient" 
+             [xAxis]="groupedVerticalBarGraphOptions.xAxis" 
+             [yAxis]="groupedVerticalBarGraphOptions.yAxis"
+             [legend]="groupedVerticalBarGraphOptions.legend" 
+             [showXAxisLabel]="groupedVerticalBarGraphOptions.showXAxisLabel"
+             [showYAxisLabel]="groupedVerticalBarGraphOptions.showYAxisLabel" 
+             [xAxisLabel]="groupedVerticalBarGraphOptions.xAxisLabel"
+             [yAxisLabel]="groupedVerticalBarGraphOptions.yAxisLabel">
+             </ngx-charts-bar-vertical-2d>
+          </div>
+       </div>
+       <div class="row">
+          <div class="col-md-6">
+             <h3 class="chart-header">Contract Processed</h3>
+             <ngx-charts-line-chart
+             [view]="[500, 500]"
+             [scheme]="multiLineOptions.colorScheme"
+             [results]="contractProcessedData"
+             [gradient]="multiLineOptions.gradient"
+             [xAxis]="multiLineOptions.showXAxis"
+             [yAxis]="multiLineOptions.showYAxis"
+             [legend]="multiLineOptions.showLegend"
+             [showXAxisLabel]="multiLineOptions.showXAxisLabel"
+             [showYAxisLabel]="multiLineOptions.showYAxisLabel"
+             [xAxisLabel]="multiLineOptions.xAxisLabel"
+             [yAxisLabel]="multiLineOptions.yAxisLabel"
+             [autoScale]="multiLineOptions.autoScale"
+             >
+             </ngx-charts-line-chart>
+          </div>
+          <div class="col-md-6">
+             <div class="row">
+                <div class="col-md-7">
+                   <h3 class="chart-header" style="text-align: right;">Turnaround Time</h3>
+                </div>
+                <div class="offset-md-2"></div>
+                <div class="total-contracts col-md-3 avgTeamTime">Average Team Time:8</div>
+             </div>
+             <ngx-charts-bar-vertical
+             [view]="[500, 500]"
+             [scheme]="turnaroundTimeOptions.colorScheme"
+             [results]="turnaroundTimeData"
+             [gradient]="turnaroundTimeOptions.gradient"
+             [xAxis]="turnaroundTimeOptions.showXAxis"
+             [yAxis]="turnaroundTimeOptions.showYAxis"
+             [legend]="turnaroundTimeOptions.showLegend"
+             [xAxisLabel]="turnaroundTimeOptions.xAxisLabel"
+             [yAxisLabel]="turnaroundTimeOptions.yAxisLabel"
+             >
+             </ngx-charts-bar-vertical>
+          </div>
+       </div>
+       <div class="row">
+          <div class="col-md-6">
+             <h3 class="chart-header">Analyst Errors</h3>
+             <ngx-charts-line-chart
+             [view]="[500, 500]"
+             [scheme]="analystErrorsOptions.colorScheme"
+             [results]="analystErrorsData"
+             [gradient]="analystErrorsOptions.gradient"
+             [xAxis]="analystErrorsOptions.showXAxis"
+             [yAxis]="analystErrorsOptions.showYAxis"
+             [legend]="analystErrorsOptions.showLegend"
+             [showXAxisLabel]="analystErrorsOptions.showXAxisLabel"
+             [showYAxisLabel]="analystErrorsOptions.showYAxisLabel"
+             [xAxisLabel]="analystErrorsOptions.xAxisLabel"
+             [yAxisLabel]="analystErrorsOptions.yAxisLabel"
+             [autoScale]="analystErrorsOptions.autoScale"
+             >
+             </ngx-charts-line-chart>
+          </div>
+          <div class="col-md-6">
+             <h3 class="chart-header">SLA Performance</h3>
+             <ngx-charts-line-chart
+             [view]="[500, 500]"
+             [scheme]="slaPerformanceOptions.colorScheme"
+             [results]="slaPerformanceData"
+             [gradient]="slaPerformanceOptions.gradient"
+             [xAxis]="slaPerformanceOptions.showXAxis"
+             [yAxis]="slaPerformanceOptions.showYAxis"
+             [legend]="slaPerformanceOptions.showLegend"
+             [xAxisLabel]="slaPerformanceOptions.xAxisLabel"
+             [yAxisLabel]="slaPerformanceOptions.yAxisLabel"
+             [autoScale]="slaPerformanceOptions.autoScale"
+             >
+             </ngx-charts-line-chart>
+          </div>
+       </div>
+    </section>
+ </main>
