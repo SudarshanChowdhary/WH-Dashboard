@@ -8,18 +8,19 @@
  .total-contracts{
     background-color: rgb(148, 138, 138);
      border-radius: 5px;
-     padding: 0 10px;
      color: white;
+     padding: 6px 5px;
 }
  .chart-header{
     text-align: center;
 }
  .head-total-contracts{
     text-align: right;
+   
 }
  .avgTeamTime{
     word-break: break-all;
-     padding: 0px 0px 0px 5px;
+     padding: 0px 0px 0px 5px !important;
      margin-top: 20px;
 }
  
