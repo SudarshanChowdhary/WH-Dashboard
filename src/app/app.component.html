@@ -1,10 +1,11 @@
 <main class="container">
-    <header class="container-fluid">
-       <nav class="bg-primary header row">
-          <div class="nav navbar-nav col-md-6">
+    <header class="container">
+       <nav class="bg-primary header">
+          <div class="nav navbar-nav">
              <ul class="list-inline pull-left">
-                <li><img src="./assets/logo.png" alt="compnay logo"></li>
                 <li>
+                   <img class="img-fluid" style="max-width: 100%; height: auto;" src="./assets/logo.png" alt="compnay logo"></li>
+                <li >
                    <div>Contract Intelligence</div>
                 </li>
                 <li>
@@ -12,7 +13,7 @@
                 </li>
              </ul>
           </div>
-          <div class="col-md-6 user-name">
+          <div class="user-name">
              <ul class="list-inline pull-right">
                 <li>
                    <div class="glyphicon glyphicon-user"> KajalGadiya <span class="caret"></span></div>
@@ -25,35 +26,54 @@
        </nav>
     </header>
     <section class="container">
-       <ul class="list-inline">
+         <ul class="list hidden-lg hidden-md hidden-sm">
+               <li class="list-style"><button class="btn btn-sm btn-primary">TimeScale</button></li>
+               <li class="list-style">
+                  <div>
+                     <label for="today"><input type="radio" value="today" name="timeframe" /> Today </label>
+                  </div>
+               </li>
+               <li class="list-style">
+                  <div>
+                     <label for="weekly"><input type="radio" value="week" name="timeframe" /> Weekly </label>
+                  </div>
+               </li>
+               <li class="list-style">
+                  <div>
+                     <label for="monthy"><input type="radio" value="month" name="timeframe" checked /> Monthy </label>
+                  </div>
+               </li>
+               <li class="list-style">
+               <button class="btn btn-primary">All Employees</button>
+             </li>
+            </ul>
+       <ul class="list-inline hidden-xs">
           <li><button class="btn btn-sm btn-primary">TimeScale</button></li>
-          <li>
+          <li >
              <div>
                 <label for="today"><input type="radio" value="today" name="timeframe" /> Today </label>
              </div>
           </li>
-          <li>
+          <li >
              <div>
                 <label for="weekly"><input type="radio" value="week" name="timeframe" /> Weekly </label>
              </div>
           </li>
-          <li>
+          <li >
              <div>
                 <label for="monthy"><input type="radio" value="month" name="timeframe" checked /> Monthy </label>
              </div>
           </li>
+          <li >
           <button class="btn btn-primary">All Employees</button>
-          <li>
-             <div>
-             </div>
-          </li>
+        </li>
        </ul>
     </section>
     <section class="container">
        <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12 col-xs-12">
              <h3 class="chart-header">Book Of Work</h3>
-             <h4 class="head-total-contracts"><span class="total-contracts">Total Contracts: 146</span> </h4>
+             <h4 class="head-total-contracts"><span class="total-contracts">Total Contracts: {{APIData.bookOfWork.totalContract}}</span> </h4>
              <ngx-charts-pie-chart 
              [view]="[500, 500]" 
              [gradient]="pieGraphOptions.gradient" 
@@ -67,7 +87,7 @@
              [doughnut]="pieGraphOptions.doughnut">
              </ngx-charts-pie-chart>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12 col-xs-12">
              <h3 class="chart-header">Completion Status</h3>
              <ngx-charts-bar-vertical-2d 
              [view]="[500, 500]" 
@@ -85,7 +105,7 @@
           </div>
        </div>
        <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12 col-xs-12">
              <h3 class="chart-header">Contract Processed</h3>
              <ngx-charts-line-chart
              [view]="[500, 500]"
@@ -103,14 +123,16 @@
              >
              </ngx-charts-line-chart>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12 col-xs-12">
              <div class="row">
-                <div class="col-md-7">
-                   <h3 class="chart-header" style="text-align: right;">Turnaround Time</h3>
+                <div class="col-md-7 col-sm-7 col-xs-7">
+                   <h3 class="chart-header">Turnaround Time</h3>
                 </div>
-                <div class="offset-md-2"></div>
-                <div class="total-contracts col-md-3 avgTeamTime">Average Team Time:8</div>
+                <div class="row">
+                <!-- <div class="offset-md-2 col-sm-12 col-xs-12"></div> -->
+                <div class="total-contracts col-md-3 col-sm-3 col-xs-3 avgTeamTime">Average Team Time:{{APIData.turnaroundTime.avgTeamTime}}</div>
              </div>
+            </div>
              <ngx-charts-bar-vertical
              [view]="[500, 500]"
              [scheme]="turnaroundTimeOptions.colorScheme"
@@ -126,7 +148,7 @@
           </div>
        </div>
        <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12 col-xs-12">
              <h3 class="chart-header">Analyst Errors</h3>
              <ngx-charts-line-chart
              [view]="[500, 500]"
@@ -144,7 +166,7 @@
              >
              </ngx-charts-line-chart>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12 col-xs-12">
              <h3 class="chart-header">SLA Performance</h3>
              <ngx-charts-line-chart
              [view]="[500, 500]"

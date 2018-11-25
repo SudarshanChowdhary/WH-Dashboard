@@ -23,9 +23,11 @@ import { HolmesService } from './Holmes.service';
   };
   private bookOfWorkData: Array < object > ;
   private completionStatusData: Array < any > ;
+  APIData:any;
  
   constructor(private HolmesService: HolmesService) {
    this.HolmesService.getData().subscribe(data => {
+    this.APIData = data;
     this.bookOfWorkData = this.formatBookOfWorkData(data.bookOfWork);
     this.completionStatusData = this.formatCompletionStatusData(data.completionStatus);
     this.contractProcessedData = this.formatContractProcessedData(data.contractProcessed);
