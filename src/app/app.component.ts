@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HolmesService } from './Holmes.service';
+import { HolmesService } from './holmes.service';
 
 @Component({
   selector: 'app-root',
